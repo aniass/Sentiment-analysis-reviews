@@ -7,7 +7,8 @@ The project concerns sentiment analysis of clothes reviews to determine whether 
 The dataset comes from Woman Clothing Review that can be find at https://www.kaggle.com/nicapotato/womens-ecommerce-clothing-reviews. 
 
 ## Project includes:
-* sentiment analysis
+* EDA analysis
+* Sentiment analysis
 
 ## The project is created with:
 * Python 3.6

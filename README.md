@@ -19,3 +19,6 @@ We used different machine learning algorithms to get more accurate predictions a
 #### The project is created with:
 * Python 3.6
 * libraries: nltk, pandas, numpy, scikit-learn, wordcloud, Vader, TextBlob.
+
+#### Running the project:
+To run this project use Jupyter Notebook or Google Colab.

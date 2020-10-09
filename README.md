@@ -11,9 +11,9 @@ The goal of the project is sentiment analysis of clothes reviews by using the va
 We used different machine learning algorithms to get more accurate predictions and the Vader and TextBlob methods to analyze the sentiment of reviews and compare their relevance.
 
 ## Project includes:
-* EDA analysis
-* Sentiment analysis
-* Sentiment analysis with Vader and TextBlob
+* EDA analysis - ***EDA_sentiment.ipynb***
+* Sentiment analysis - ***Sentiment_analysis.ipynb***
+* Sentiment analysis with Vader and TextBlob - ***Sentiment_vader.ipynb***
 * Python scripts to clean data and use sentiment model
 
 #### The project is created with:

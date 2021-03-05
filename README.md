@@ -14,6 +14,7 @@ We used different machine learning algorithms to get more accurate predictions a
 * EDA analysis - ***EDA_sentiment.ipynb***
 * Sentiment analysis - ***Sentiment_analysis.ipynb***
 * Sentiment analysis with Vader and TextBlob - ***Sentiment_vader.ipynb***
+* Sentiment analysis based on customer rating - ***Sentiment_two.ipynb***
 * Python scripts to clean data and use sentiment model - ***clean_data.py***, ***sentiment_model.py***
 
 #### The project is created with:

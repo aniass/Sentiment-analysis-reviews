@@ -12,7 +12,8 @@ We used different machine learning and deep learning (LSTM) algorithms to get mo
 
 ## Project includes:
 * EDA analysis - ***EDA_sentiment.ipynb***
-* Sentiment analysis - ***Sentiment_analysis.ipynb***
+* Sentiment analysis with ML algorithms - ***Sentiment_analysis.ipynb***
+* Sentiment analysis with Glove embeddings and LSTM - ***Sentiment_glove.ipynb***
 * Sentiment analysis with Vader and TextBlob - ***Sentiment_vader.ipynb***
 * Sentiment analysis based on customer rating - ***Sentiment_two.ipynb***
 * Python scripts to clean data and use sentiment model - ***clean_data.py***, ***sentiment_model.py***

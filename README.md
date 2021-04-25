@@ -7,8 +7,7 @@ The project concerns sentiment analysis of clothes reviews to determine whether 
 The dataset comes from Woman Clothing Review that can be find at [Kaggle](https://www.kaggle.com/nicapotato/womens-ecommerce-clothing-reviews). 
 
 ## Motivation
-The goal of the project is sentiment analysis of clothes reviews by using the various methods and determine possible recommendation.
-We used different machine learning and deep learning (LSTM) algorithms to get more accurate predictions. The Vader and TextBlob methods have been used to analyze the sentiment of reviews and compare their relevance.
+The goal of the project is sentiment analysis of clothes reviews by using the various methods and determine possible recommendation. We have build model to predict if the review is positive or negative. We used different machine learning algorithms and a pre-trained Glove word embeddings with Bidirectional LSTM to get more accurate predictions. The Vader and TextBlob methods have been also used to analyze the sentiment of reviews and to compare their relevance.
 
 ## Project includes:
 * EDA analysis - ***EDA_sentiment.ipynb***

@@ -15,7 +15,7 @@ The goal of the project is sentiment analysis of clothes reviews by using the va
 * Sentiment analysis with Glove embeddings and LSTM - ***Sentiment_glove.ipynb***
 * Sentiment analysis with Vader and TextBlob - ***Sentiment_vader.ipynb***
 * Sentiment analysis based on customer rating - ***Sentiment_two.ipynb***
-* Python scripts to clean data and use sentiment model - ***clean_data.py***, ***sentiment_model.py***
+* Python scripts to clean data and use model - ***clean_data.py***, ***sentiment_model.py***
 
 #### The project is created with:
 * Python 3.6

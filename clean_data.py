@@ -5,8 +5,9 @@ from nltk.corpus import stopwords
 from nltk.stem.wordnet import WordNetLemmatizer
 
 stop_words = stopwords.words('english')
-clothes =['dress', 'color', 'wear', 'top', 'sweater', 'material', 'shirt', 'jeans', 'pant',
-          'skirt', 'order', 'white', 'black', 'fabric', 'blouse', 'sleeve', 'even', 'jacket']
+clothes = ['dress', 'color', 'wear', 'top', 'sweater', 'material', 'shirt',
+           'jeans', 'pant', 'skirt', 'order', 'white', 'black', 'fabric',
+           'blouse', 'sleeve', 'even', 'jacket']
 lem = WordNetLemmatizer()
 
 
@@ -19,7 +20,8 @@ def clean_text(words):
 
 def remove_stopwords(review):
     """The function to removing stopwords"""
-    text = [word.lower() for word in review.split() if word.lower() not in stop_words and word.lower() not in clothes]
+    text = [word.lower() for word in review.split() if word.lower() not in
+            stop_words and word.lower() not in clothes]
     return " ".join(text)
 
 
@@ -27,7 +29,7 @@ def remove_numbers(text):
     """The function to removing all numbers"""
     new_text = []
     for word in text.split():
-        if not re.search('\d', word):
+        if not re.search('\\d', word):
             new_text.append(word)
     return ' '.join(new_text)
 
@@ -53,4 +55,5 @@ dataset['Review'] = dataset['Review'].apply(remove_numbers)
 dataset['Review'] = dataset['Review'].apply(get_lemmatize)
 print(dataset[:5])
 
-data = dataset.to_csv('C:\\Python Scripts\\NLP_projekty\\review_clean.csv', encoding='utf-8')
+data = dataset.to_csv('C:\\Python Scripts\\NLP_projekty\\review_clean.csv',
+                      encoding='utf-8')

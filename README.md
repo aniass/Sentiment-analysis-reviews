@@ -4,6 +4,9 @@
 
 The project concerns sentiment analysis of clothes reviews to determine whether the product is recommended or not. Moreover it includes data analysis, data preparation, text mining and build model by using virtue different machine learning and deep learning algorithms. The project also includes EDA analysis and sentiment analysis by using Vader and TextBlob methods.
 
+**I have created the web application in Flask based on this project and code for this app is available [here](https://github.com/aniass/sentiment-app).**
+
+### Dataset
 The dataset comes from Woman Clothing Review that can be find at [Kaggle](https://www.kaggle.com/nicapotato/womens-ecommerce-clothing-reviews). 
 
 ## Motivation
@@ -15,7 +18,8 @@ The goal of the project is sentiment analysis of clothes reviews by using the va
 * Sentiment analysis with Glove embeddings and LSTM - ***Sentiment_glove.ipynb***
 * Sentiment analysis with Vader and TextBlob - ***Sentiment_vader.ipynb***
 * Sentiment analysis based on customer rating - ***Sentiment_two.ipynb***
-* Python scripts to clean data and use model - ***clean_data.py***, ***sentiment_model.py***
+* Python script to clean data - ***clean_data.py*** 
+* Python script to use sentiment model with smote method ***sentiment_model.py***
 * data - data used in the project.
 
 #### The project is created with:

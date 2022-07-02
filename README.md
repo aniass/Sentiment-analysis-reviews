@@ -19,7 +19,7 @@ The goal of the project is sentiment analysis of clothes reviews by using the va
 * Sentiment analysis with Vader and TextBlob - ***Sentiment_vader.ipynb***
 * Sentiment analysis based on customer rating - ***Sentiment_two.ipynb***
 * Python script to clean data - ***clean_data.py*** 
-* Python script to use sentiment model with smote method ***sentiment_model.py***
+* Python script to use sentiment model with smote method - ***sentiment_model.py***
 * data - data used in the project.
 
 #### The project is created with:

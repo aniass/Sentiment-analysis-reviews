@@ -19,6 +19,8 @@ clothes = ['dress', 'color', 'wear', 'top', 'sweater', 'material', 'shirt',
            'blouse', 'sleeve', 'even', 'jacket']
 lem = WordNetLemmatizer()
 
+URL_DATA  = 'C:\\Python Scripts\\Projects_done\\Sentiment\\review_final.csv'
+
 
 def text_preprocess(text):
     ''' The function to remove punctuation,
@@ -30,45 +32,51 @@ def text_preprocess(text):
     return " ".join(words)
 
 
-# Load dataset
-url = 'C:\\Python Scripts\\NLP_projekty\\review_final.csv'
-df = pd.read_csv(url, header=0, index_col=0)
+def read_data(path):
+    """ Function to read and clean text data"""
+    data = pd.read_csv(path, header=0, index_col=0)
+    data['Review'] = data['Review'].apply(text_preprocess)
+    X = data['Review']
+    y = data['Recommended']
+    return X, y
 
-# Shape
-print(df.shape)
-print(df.head())
 
-# Separate into input and output columns
-X = df['Review']
-y = df['Recommended']
+def prepare_data(X, y):
+    """ Function to split data on train and test set """
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,
+                                                        random_state=42)
+    return X_train, X_test, y_train, y_test
 
-# Split the dataset into train and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2,
-                                                    random_state=42)
 
-models = pd.DataFrame()
+def calculate_models(X_train, X_test, y_train, y_test):
+    ''' Calculating models with score '''
+    models = pd.DataFrame()
+    classifiers = [
+        LogisticRegression(),
+        MultinomialNB(),
+        SGDClassifier(loss='hinge', penalty='l2', alpha=1e-3, random_state=42),
+        RandomForestClassifier(n_estimators=50),
+        AdaBoostClassifier(),]
 
-classifiers = [
-    LogisticRegression(),
-    MultinomialNB(),
-    SGDClassifier(loss='hinge', penalty='l2', alpha=1e-3, random_state=42),
-    RandomForestClassifier(n_estimators=50),
-    AdaBoostClassifier(),
-    ]
+    for classifier in classifiers:
+        pipeline = imbpipeline(steps=[('vect', CountVectorizer(
+                                min_df=5, ngram_range=(1, 2))),
+                                      ('tfidf', TfidfTransformer()),
+                                      ('smote', SMOTE()),
+                                      ('classifier', classifier)])
+        pipeline.fit(X_train, y_train)
+        score = pipeline.score(X_test, y_test)
+        param_dict = {
+                      'Model': classifier.__class__.__name__,
+                      'Score': score
+                     }
+        models = models.append(pd.DataFrame(param_dict, index=[0]))
 
-for classifier in classifiers:
-    pipe = imbpipeline(steps=[('vect', CountVectorizer(
-            tokenizer=text_preprocess, min_df=5, ngram_range=(1, 2))),
-                              ('tfidf', TfidfTransformer()),
-                              ('smote', SMOTE()),
-                              ('classifier', classifier)])
-    pipe.fit(X_train, y_train)
-    score = pipe.score(X_test, y_test)
-    param_dict = {
-                  'Model': classifier.__class__.__name__,
-                  'Score': score
-                  }
-    models = models.append(pd.DataFrame(param_dict, index=[0]))
+    models.reset_index(drop=True, inplace=True)
+    print(models.sort_values(by='Score', ascending=False))
 
-models.reset_index(drop=True, inplace=True)
-print(models.sort_values(by='Score', ascending=False))
+
+if __name__ == '__main__':
+    X, y = read_data(URL_DATA)
+    X_train, X_test, y_train, y_test = prepare_data(X, y)
+    calculate_models(X_train, X_test, y_train, y_test)

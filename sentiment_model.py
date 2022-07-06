@@ -19,11 +19,11 @@ clothes = ['dress', 'color', 'wear', 'top', 'sweater', 'material', 'shirt',
            'blouse', 'sleeve', 'even', 'jacket']
 lem = WordNetLemmatizer()
 
-URL_DATA  = 'C:\\Python Scripts\\Projects_done\\Sentiment\\review_final.csv'
+URL_DATA  = 'data\review_final.csv'
 
 
 def text_preprocess(text):
-    ''' The function to remove punctuation,
+    ''' Function to remove punctuation,
     stopwords and apply stemming'''
     words = re.sub("[^a-zA-Z]", " ", text)
     words = [word.lower() for word in words.split() if word.lower() not in

@@ -24,7 +24,13 @@ The goal of the project is sentiment analysis of clothes reviews by using the va
 
 #### The project is created with:
 * Python 3.6
-* libraries: pandas, numpy, scikit-learn, keras, tensorflow, nltk, wordcloud, Vader, TextBlob.
+* libraries: pandas, numpy, scikit-learn, keras, tensorflow, nltk, imbalanced-learn, wordcloud, Vader, TextBlob.
 
 #### Running the project:
 To run this project use Jupyter Notebook or Google Colab.
+
+You can run the scripts in the terminal:
+
+    clean_data.py
+    sentiment_model.py
+

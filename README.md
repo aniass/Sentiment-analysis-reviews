@@ -27,7 +27,18 @@ The goal of the project is sentiment analysis of clothes reviews by using the va
 
 In the second we have used a a pre-trained Glove word embeddings with Bidirectional LSTM Neural Network to get more accurate predictions. We achieved an accuracy on the test set equal to 88 % and it is a very good result. From our experiments we can see that the both tested approaches give an overall high accuracy and similar results for our problem.
 
+Model | Embeddings | Accuracy
+------------ | ------------- | ------------- 
+Logistic Regression | BOW +TF-IDF  | 0.89
+Bidirectional LSTM| Glove embeddings  | 0.88
+Random Forest| BOW +TF-IDF | 0.87
+Naive Bayes | BOW +TF-IDF| 0.87
+Stochastic Gradient Descent | BOW +TF-IDF | 0.86
+AdaBoosting | BOW +TF-IDF | 0.84
+
 In another approach we also used The Vader and TextBlob methods  to analyze the sentiment of reviews and to compare their relevance. 
+
+## Technologies
 
 #### The project is created with:
 * Python 3.6

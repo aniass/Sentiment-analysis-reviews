@@ -23,9 +23,9 @@ The text classification relies to assigned documents into one or many categories
 * data - data used in the project.
 
 ## Summary
-The goal of the project is sentiment analysis of clothes reviews by using the various methods and determine possible recommendation. We have build model to predict if the review is positive or negative. We started with the data analysis, data pre-processing and text mining, which cover change text into tokens, remove punctuation, numbers, stop words and normalization them by using lemmatization. We have used SMOTE method to resolve the imbalance problem in our data. In the first approach we used bag of words model to convert the text into numerical feature vectors. To get more accurate predictions we have applied five different classification algorithms like: Logistic Regression, Naive Bayes, Stochastic Gradient Descent, Random Forest and Ada Boosting as well.  Finally we got the best accuracy of 89 % for  Logistic Regression model.
+The goal of the project was sentiment analysis of clothes reviews by using the various methods and determine possible recommendation. I built a model to predict if the review is positive or negative. I have started with the data analysis, data pre-processing and text mining, which cover change text into tokens, remove punctuation, numbers, stop words and normalization them by using lemmatization. I have also used SMOTE method to resolve the imbalance problem in data. In the first approach I used bag of words model to convert the text into numerical feature vectors. To get more accurate predictions I have applied five different classification algorithms like: Logistic Regression, Naive Bayes, Stochastic Gradient Descent, Random Forest and Ada Boosting as well. Finally I  got the best accuracy of 89 % for Logistic Regression model.
 
-In the second we have used a a pre-trained Glove word embeddings with Bidirectional LSTM Neural Network to get more accurate predictions. We achieved an accuracy on the test set equal to 88 % and it is a very good result. From our experiments we can see that the both tested approaches give an overall high accuracy and similar results for our problem.
+In the second I have used a a pre-trained Glove word embeddings with Bidirectional LSTM Neural Network to get more accurate predictions. I achieved an accuracy on the test set equal to 88 % and it is a very good result. From the experiments one can see that the both tested approaches give an overall high accuracy and similar results for the problem.
 
 Model | Embeddings | Accuracy
 ------------ | ------------- | ------------- 
@@ -36,7 +36,7 @@ Naive Bayes | BOW +TF-IDF| 0.87
 Stochastic Gradient Descent | BOW +TF-IDF | 0.86
 AdaBoosting | BOW +TF-IDF | 0.84
 
-In another approach we also used The Vader and TextBlob methods  to analyze the sentiment of reviews and to compare their relevance. 
+In another approach I also used The Vader and TextBlob methods to analyze the sentiment of reviews and to compare their relevance. 
 
 ## Technologies
 

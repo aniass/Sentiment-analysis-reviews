@@ -5,13 +5,18 @@ from nltk.corpus import stopwords
 from nltk.stem.wordnet import WordNetLemmatizer
 
 
-URL_DATA  = 'data\review_final.csv'
+URL_DATA  = r'data\review_final.csv'
+CLEANED_DATA_PATH = r'data\review_clean.csv'
 
 
 def read_data(path: str) -> pd.DataFrame:
-    """Function to read and data """
-    data = pd.read_csv(path, header=0, index_col=0)
-    return data
+    """Function to read data"""
+    try:
+        df = pd.read_csv(path, header=0, index_col=0)
+        return df
+    except Exception as e:
+        print(f"Error loading data: {str(e)}")
+        return pd.DataFrame()
 
 
 def clean_text(words: str) -> str:
@@ -61,6 +66,7 @@ def preprocess_data(data: str) -> str:
 if __name__ == '__main__':
     data = read_data(URL_DATA)
     dataset = preprocess_data(data)
-    print(dataset.shape)
-    print(dataset[:5])
-    dataset.to_csv('data\review_clean.csv',encoding='utf-8')
+    if not dataset.empty:
+        print(dataset.shape)
+        print(dataset.head(5))
+        dataset.to_csv(CLEANED_DATA_PATH, encoding='utf-8')

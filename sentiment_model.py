@@ -17,9 +17,18 @@ from sklearn.ensemble import AdaBoostClassifier
 URL_DATA  = r'data\review_final.csv'
 
 
+def read_data(path):
+    """Function to read data"""
+    try:
+        df = pd.read_csv(path, header=0, index_col=0)
+        return df
+    except Exception as e:
+        print(f"Error loading data: {str(e)}")
+        return pd.DataFrame()
+    
+
 def text_preprocess(text):
-    ''' Function to remove punctuation,
-    stopwords and apply stemming'''
+    ''' Function to remove punctuation, stopwords and apply stemming'''
     # remove punctuation
     words = re.sub("[^a-zA-Z]", " ", text)
     
@@ -37,14 +46,8 @@ def text_preprocess(text):
     return " ".join(words)
 
 
-def read_data(path):
-    """ Function to read and clean text data"""
-    data = pd.read_csv(path, header=0, index_col=0)
-    return data
-
-
-def prepare_data(data):
-    """ Function to split data on train and test set """
+def splitting_data(data):
+    """Function to split data on train and test set"""
     data['Review'] = data['Review'].apply(text_preprocess)
     X = data['Review']
     y = data['Recommended']
@@ -54,7 +57,7 @@ def prepare_data(data):
 
 
 def calculate_models(X_train, X_test, y_train, y_test):
-    ''' Calculating models with score '''
+    '''Calculating models with score'''
     models = pd.DataFrame()
     classifiers = [
         LogisticRegression(),
@@ -64,24 +67,30 @@ def calculate_models(X_train, X_test, y_train, y_test):
         AdaBoostClassifier(),]
 
     for classifier in classifiers:
-        pipeline = imbpipeline(steps=[('vect', CountVectorizer(
-                                min_df=5, ngram_range=(1, 2))),
-                                      ('tfidf', TfidfTransformer()),
-                                      ('smote', SMOTE()),
-                                      ('classifier', classifier)])
-        pipeline.fit(X_train, y_train)
-        score = pipeline.score(X_test, y_test)
-        param_dict = {
+        try:
+            pipeline = imbpipeline(steps=[
+                    ('vect', CountVectorizer(min_df=5, ngram_range=(1, 2))),
+                    ('tfidf', TfidfTransformer()),
+                    ('smote', SMOTE()),
+                    ('classifier', classifier)
+            ])
+            pipeline.fit(X_train, y_train)
+            score = pipeline.score(X_test, y_test)
+            param_dict = {
                       'Model': classifier.__class__.__name__,
                       'Score': score
-                     }
-        models = models.append(pd.DataFrame(param_dict, index=[0]))
+            }
+            models = models.append(pd.DataFrame(param_dict, index=[0]))
+        except Exception as e:
+            print(f"Error occurred while fitting {classifier.__class__.__name__}: {str(e)}")
 
     models.reset_index(drop=True, inplace=True)
-    print(models.sort_values(by='Score', ascending=False))
+    models_sorted = models.sort_values(by='Score', ascending=False)
+    print(models_sorted)
+    return models_sorted
 
 
 if __name__ == '__main__':
     df = read_data(URL_DATA)
-    X_train, X_test, y_train, y_test = prepare_data(df)
+    X_train, X_test, y_train, y_test = splitting_data(df)
     calculate_models(X_train, X_test, y_train, y_test)

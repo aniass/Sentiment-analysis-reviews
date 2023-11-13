@@ -14,21 +14,25 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import AdaBoostClassifier
 
 
-stop_words = stopwords.words('english')
-clothes = ['dress', 'color', 'wear', 'top', 'sweater', 'material', 'shirt',
-           'jeans', 'pant', 'skirt', 'order', 'white', 'black', 'fabric',
-           'blouse', 'sleeve', 'even', 'jacket']
-lem = WordNetLemmatizer()
-
-URL_DATA  = 'data\review_final.csv'
+URL_DATA  = r'data\review_final.csv'
 
 
 def text_preprocess(text):
     ''' Function to remove punctuation,
     stopwords and apply stemming'''
+    # remove punctuation
     words = re.sub("[^a-zA-Z]", " ", text)
+    
+    # remove stopwords
+    stop_words = stopwords.words('english')
+    clothes = ['dress', 'color', 'wear', 'top', 'sweater', 'material', 'shirt',
+           'jeans', 'pant', 'skirt', 'order', 'white', 'black', 'fabric',
+           'blouse', 'sleeve', 'even', 'jacket']
     words = [word.lower() for word in words.split() if word.lower() not in
              stop_words and word.lower() not in clothes]
+    
+    # apply lemmatizing
+    lem = WordNetLemmatizer()
     words = [lem.lemmatize(word) for word in words]
     return " ".join(words)
 
@@ -36,12 +40,12 @@ def text_preprocess(text):
 def read_data(path):
     """ Function to read and clean text data"""
     data = pd.read_csv(path, header=0, index_col=0)
-    data['Review'] = data['Review'].apply(text_preprocess)
     return data
 
 
 def prepare_data(data):
     """ Function to split data on train and test set """
+    data['Review'] = data['Review'].apply(text_preprocess)
     X = data['Review']
     y = data['Recommended']
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,

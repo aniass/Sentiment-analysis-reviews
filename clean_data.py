@@ -54,7 +54,7 @@ def get_lemmatize(text: str) -> str:
 
 
 def preprocess_data(data: str) -> str:
-    ''' Function to preprocess data'''
+    """Function to preprocess data"""
     data['Review'] = data['Review'].astype(str)
     data['Review'] = data['Review'].apply(clean_text)
     data['Review'] = data['Review'].apply(remove_numbers)

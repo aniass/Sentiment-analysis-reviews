@@ -18,7 +18,7 @@ URL_DATA  = r'data\review_final.csv'
 
 
 def read_data(path: str) -> pd.DataFrame:
-    """Function to read data"""
+    """Read data"""
     try:
         df = pd.read_csv(path, header=0, index_col=0)
         return df
@@ -28,7 +28,7 @@ def read_data(path: str) -> pd.DataFrame:
     
 
 def text_preprocess(text: str) -> str:
-    ''' Function to remove punctuation, stopwords and apply stemming'''
+    """Remove punctuation, stopwords and apply stemming"""
     # remove punctuation
     words = re.sub("[^a-zA-Z]", " ", text)
     
@@ -47,7 +47,7 @@ def text_preprocess(text: str) -> str:
 
 
 def splitting_data(data: pd.DataFrame):
-    """Function to split data on train and test set"""
+    """Spliting data into train and test set"""
     data['Review'] = data['Review'].apply(text_preprocess)
     X = data['Review']
     y = data['Recommended']
@@ -57,7 +57,7 @@ def splitting_data(data: pd.DataFrame):
 
 
 def calculate_models(X_train, X_test, y_train, y_test) -> pd.DataFrame:
-    '''Calculating models with score'''
+    """Calculating models with score"""
     models = pd.DataFrame()
     classifiers = [
         LogisticRegression(),

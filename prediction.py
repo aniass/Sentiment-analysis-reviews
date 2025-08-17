@@ -22,16 +22,14 @@ def load_model():
 
 
 def preprocess_text(text):
-    # remove punctuation
+    '''Remove punctuation, stopwords and applying lemmatizing on raw data'''
     words = re.sub("[^a-zA-Z]", " ", text)
-    # remove stopwords
-    stop_words = stopwords.words('english')
+    stop_words = set(stopwords.words('english'))
     clothes = ['dress', 'color', 'wear', 'top', 'sweater', 'material', 'shirt',
            'jeans', 'pant', 'skirt', 'order', 'white', 'black', 'fabric',
            'blouse', 'sleeve', 'even', 'jacket']
     words = [word.lower() for word in words.split() if word.lower() not in
              stop_words and word.lower() not in clothes]
-    # apply lemmatizing
     lem = WordNetLemmatizer()
     words = [lem.lemmatize(word) for word in words]
     return " ".join(words)

@@ -11,13 +11,14 @@ MODELS_PATH = r'models\sent_model.pkl'
 
 
 def load_model():
-     try:
-         with open(MODELS_PATH, 'rb') as file:
-             model = load(file)
-         return model
-     except FileNotFoundError:
-         print(f"Error: The model file '{MODELS_PATH}' was not found.")
-         return None
+    '''Loading trained sentiment model'''
+    try:
+        with open(MODELS_PATH, 'rb') as file:
+            model = load(file)
+        return model
+    except FileNotFoundError:
+        print(f"Error: The model file '{MODELS_PATH}' was not found.")
+        return None
 
 
 def preprocess_text(text):
@@ -34,6 +35,7 @@ def preprocess_text(text):
 
 
 def get_prediction(input_text):
+    '''Generating predictions from raw data'''
     model = load_model()
     if model is None:
         print("Model not loaded. Cannot predict.")
@@ -41,9 +43,9 @@ def get_prediction(input_text):
     
     # Preprocess input text
     words = preprocess_text(input_text.split())
-    clean_data = [' '.join(words)]  
+    clean_data = [' '.join(words)] # Assuming the model expects a string
     
-    # Predict
+    # Prediction
     prediction = model.predict([clean_data[0]])
     if prediction == 1:
         answer = "recommended"

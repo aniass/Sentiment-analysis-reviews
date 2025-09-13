@@ -18,9 +18,10 @@ The text classification relies to assigned documents into one or many categories
 * **Part 3: Sentiment analysis based on customers rating** - Sentiment_two.ipynb
 * **Part 4: Sentiment analysis with Glove embeddings and LSTM** - Sentiment_glove.ipynb
 * **Part 5: Sentiment analysis with Vader and TextBlob models** - Sentiment_vader.ipynb
-* Python script to use sentiment model with smote method - sentiment_model.py
-* Python script to clean data - clean_data.py
-* data - data used in the project.
+* Python script to use sentiment model with smote method - **sentiment_model.py**
+* Python script to clean data - **clean_data.py**
+* Python script to generate predictions from trained model - **prediction.py**
+* data models - data and models used in the project.
 
 ## Summary
 The goal of the project was sentiment analysis of clothes reviews by using the various methods and determine possible recommendation. I built a model to predict if the review is positive or negative. I have started with the data analysis, data pre-processing and text mining, which cover change text into tokens, remove punctuation, numbers, stop words and normalization them by using lemmatization. I have also used SMOTE method to resolve the imbalance problem in data. I tested three cases of sentiment analysis with machine learning models:

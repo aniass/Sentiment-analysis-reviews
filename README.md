@@ -53,4 +53,5 @@ You can run the scripts in the terminal:
 
     clean_data.py
     sentiment_model.py
+    prediction.py
 
